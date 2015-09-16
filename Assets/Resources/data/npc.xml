@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<NPCConfig>
+	<DATA ID="1" name="Hero1" body="1" weapon="1" weaponFrameLength="25"/>
+	<DATA ID="2" name="Hero2" body="2" weapon="2" weaponFrameLength="30"/>
+  <DATA ID="3" name="Hero3" body="2" weapon="1" weaponFrameLength="30"/>
+</NPCConfig>
