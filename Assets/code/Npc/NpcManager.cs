@@ -25,6 +25,7 @@ public class NpcManager {
     {
         GameObject npc = Object.Instantiate<GameObject>(Resources.Load<GameObject>("ui/npc/hero"));
         npc.GetComponent<NPCController>().init(DataManager.getInstance().npcDB[id]);
+        npc.GetComponent<NPCController>().setPosition(0, id);
         return npc;
     }
 }

@@ -13,6 +13,8 @@ public class NPCController : MonoBehaviour {
 
     public float oriY;
 
+    public Vector2 oriPoint;
+
     public NpcVO npc;
 	// Use this for initialization
 	void Start () {
@@ -61,6 +63,22 @@ public class NPCController : MonoBehaviour {
             }
         }
 	}
+
+    public void setPosition(int posX, int posY)
+    {
+        if(oriPoint == null)
+        {
+            oriPoint = new Vector2(posX, posY);
+        }
+        else
+        {
+            oriPoint.x = posX;
+            oriPoint.y = posY;
+        }
+        Vector3 tmp = transform.position;
+        tmp.y = -0.8f + 0.4f * posY;
+        transform.position = tmp;
+    }
 
     public void walk(int step)
     {
