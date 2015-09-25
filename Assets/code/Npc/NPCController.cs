@@ -62,7 +62,46 @@ public class NPCController : MonoBehaviour {
                 transform.position = tmp;
             }
         }
+
+        
 	}
+
+    private Vector3 offset;
+    void OnMouseDown()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            //gameObject.GetComponentInChildren<UMovie>().StartAttack();
+
+            //Vector3 screenPoint = Camera.main.WorldToScreenPoint(scanPos);
+
+
+            offset = transform.position - Camera.main.ScreenToWorldPoint(
+                new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+        }
+    }
+
+    void OnMouseDrag()
+    {
+        Debug.Log("Start Drag");
+        Vector3 curr = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0)) + offset;
+        transform.position = curr;
+    }
+
+    void OnMouseUp()
+    {
+        Debug.Log("Mouse UP!!");
+
+        Vector3 curr = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 200));
+        Ray ray = new Ray(curr, new Vector3(curr.x, curr.y, -10));
+
+        Debug.DrawLine(ray.origin, ray.direction, Color.red, 1);
+
+        RaycastHit s;
+        int layerIndex = 1 << LayerMask.NameToLayer("Default");
+        Physics.Raycast(ray, out s, layerIndex);
+        Debug.Log( s.transform.name);
+    }
 
     public void setPosition(int posX, int posY)
     {
